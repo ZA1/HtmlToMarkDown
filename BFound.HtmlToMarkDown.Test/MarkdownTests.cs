@@ -112,5 +112,11 @@ namespace BFound.HtmlToMarkDown.Test
             Assert.AreEqual("\r\n  * Item 1\r\n      1. Item 1\r\n      2. Item 2\r\n      3. Item 3\r\n  * Item 2\r\n  * Item 3",
                 MarkDownDocument.FromHtml("<ul><li>Item 1<ol><li>Item 1</li><li>Item 2</li><li>Item 3</li></ol></li><li>Item 2</li><li>Item 3</li></ul>"));
         }
+
+        [TestMethod]
+        public void TestEmptyDiv()
+        {
+            MarkDownDocument.FromHtml("<div></div>");
+        }
     }
 }

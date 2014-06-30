@@ -10,7 +10,7 @@ namespace BFound.HtmlToMarkdown
     {
         public override string ToString()
         {
-            if(ChildNodes.Last() is BreakMarkDownNode)
+            if(ChildNodes.LastOrDefault() is BreakMarkDownNode)
             {
                 return base.ToString().TrimStart();
             }
