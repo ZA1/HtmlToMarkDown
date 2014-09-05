@@ -13,9 +13,10 @@ namespace BFound.HtmlToMarkdown
         {
             var htmlDocument = new HtmlAgilityPack.HtmlDocument();
             htmlDocument.LoadHtml(html);
+            var body = htmlDocument.DocumentNode.SelectSingleNode("//body");
 
             var mardownDocumentNode = new MarkDownNode();
-            HtmlNodeToMarkDownNode(htmlDocument.DocumentNode, mardownDocumentNode);
+            HtmlNodeToMarkDownNode(body ?? htmlDocument.DocumentNode, mardownDocumentNode);
 
             return mardownDocumentNode.ToString();
         }
@@ -84,6 +85,10 @@ namespace BFound.HtmlToMarkdown
                     break;
                 case "li":
                     markdownNode = markdownNode.Append(new ListItemMarkDownNode());
+                    break;
+                case "style":
+                case "script":
+                    markdownNode = markdownNode.Append(new EmptyMarkdownNode());
                     break;
                 case "#text":
                     var text = System.Text.RegularExpressions.Regex.Replace(htmlNode.InnerText, "\\s+", " ");

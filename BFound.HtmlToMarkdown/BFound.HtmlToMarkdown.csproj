@@ -46,6 +46,7 @@
     <Compile Include="BoldMarkDownNode.cs" />
     <Compile Include="BreakMarkDownNode.cs" />
     <Compile Include="DivMarkDownNode.cs" />
+    <Compile Include="EmptyMarkdownNode.cs" />
     <Compile Include="HeadingMarkDownNode.cs" />
     <Compile Include="HorizontalRuleMarkDownNode.cs" />
     <Compile Include="ImageMarkDownNode.cs" />

@@ -118,5 +118,26 @@ namespace BFound.HtmlToMarkDown.Test
         {
             MarkDownDocument.FromHtml("<div></div>");
         }
+
+        [TestMethod]
+        public void TestWithBody()
+        {
+            Assert.AreEqual("Body", 
+                MarkDownDocument.FromHtml("<html><head><title>Title</title><style>sdfdsf</style></head><body>Body</body></html>"));
+        }
+
+        [TestMethod]
+        public void TestWithStyle()
+        {
+            Assert.AreEqual("Body",
+                MarkDownDocument.FromHtml("<style>sdfdsf</style>Body"));
+        }
+
+        [TestMethod]
+        public void TestWithScript()
+        {
+            Assert.AreEqual("Body",
+                MarkDownDocument.FromHtml("<script>sdfdsf</script>Body"));
+        }
     }
 }
