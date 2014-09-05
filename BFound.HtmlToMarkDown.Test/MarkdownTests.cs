@@ -139,5 +139,16 @@ namespace BFound.HtmlToMarkDown.Test
             Assert.AreEqual("Body",
                 MarkDownDocument.FromHtml("<script>sdfdsf</script>Body"));
         }
+
+        [TestMethod]
+        public void TestCustomElements()
+        {
+            var converters = new System.Collections.Generic.Dictionary<string, Func<HtmlAgilityPack.HtmlNode, MarkDownNode, MarkDownNode>>
+            {
+                {"xyz", (h, m) => m.Append(new BoldMarkDownNode())}
+            };
+            Assert.AreEqual("**bold**Body",
+                MarkDownDocument.FromHtml("<xyz>bold</xyz>Body", converters));
+        }
     }
 }
